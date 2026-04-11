@@ -1,0 +1,20 @@
+What is Binary Search?
+
+Binary Search works on a sorted array and repeatedly divides the search space in half.
+
+👉 Instead of checking every element (like linear search), it eliminates half each time.
+
+How Binary Search Works:_____
+Initialize: Set two pointers, low at the first index and high at the last index of the array.
+
+Find Midpoint: Calculate the middle index: mid = low + (high - low) / 2.
+
+Compare:
+
+If the middle element equals the target, return its index.
+
+If the target is smaller than the middle element, discard the right half by setting high = mid - 1.
+
+If the target is larger than the middle element, discard the left half by setting low = mid + 1.
+
+Repeat: Continue steps 2 and 3 until the target is found or low exceeds high (meaning the target is not present). 
