@@ -160,3 +160,94 @@ This is also called **Lower Bound**.
 3. Return ans
 
 ---
+
+# 🔍 Find First and Last Position of Element in Sorted Array
+
+## 📌 Problem
+Given a sorted array `nums` (non-decreasing order), find the **starting** and **ending position** of a given `target`.
+
+If the target is not found, return: [-1, -1]
+
+## 🧠 Approach
+
+We use **Binary Search twice**:
+
+1. **First Occurrence (Leftmost Index)**
+2. **Last Occurrence (Rightmost Index)**
+
+---
+
+## 💡 Key Idea
+
+Instead of stopping when we find the target:
+
+- For **first position** → keep searching **left**
+- For **last position** → keep searching **right**
+
+👉 This helps us find the full range of the target.
+
+---
+
+## 🪜 Steps
+
+### 1️⃣ First Position
+- Initialize:
+  - `low = 0`, `high = n - 1`
+  - `first = -1`
+
+- While `low <= high`:
+  - Find `mid`
+  - If `nums[mid] == target`:
+    - store index
+    - move left → `high = mid - 1`
+  - Else if `nums[mid] < target`:
+    - move right → `low = mid + 1`
+  - Else:
+    - move left → `high = mid - 1`
+
+---
+
+### 2️⃣ Last Position
+- Initialize:
+  - `low = 0`, `high = n - 1`
+  - `last = -1`
+
+- While `low <= high`:
+  - Find `mid`
+  - If `nums[mid] == target`:
+    - store index
+    - move right → `low = mid + 1`
+  - Else if `nums[mid] < target`:
+    - move right → `low = mid + 1`
+  - Else:
+    - move left → `high = mid - 1`
+
+---
+Input: nums = [5,7,7,8,8,10], target = 8  
+Output: [3,4]
+
+Input: nums = [5,7,7,8,8,10], target = 6  
+Output: [-1,-1]
+
+Input: nums = [], target = 0  
+Output: [-1,-1]
+
+⏱️ Complexity
+Time: O(log n) (Binary Search twice)
+Space: O(1)
+
+🔑 Key Takeaways
+Binary Search can be used to find boundaries, not just elements
+Do NOT stop when target is found
+Use:
+Left bias → First occurrence
+Right bias → Last occurrence
+Works only on sorted arrays
+Very common interview pattern
+
+🚀 What I Learned
+How to modify binary search logic instead of stopping early
+Importance of constraints (O(log n))
+Concept of searching for range using two passes
+Reusable pattern for many problems
+
